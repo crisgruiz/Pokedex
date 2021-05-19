@@ -19,7 +19,8 @@ const getDataFromApi = () => {
       const pokemon = {
         pokemonName: data.name,
         image: data.sprites.front_default,
-        type: data.types[0].type.name,
+        type: data.types.map((type) => type.type.name),
+        imageType: data.types.map((type) => type.type.url),
         weight: data.weight,
         height: data.height,
       };
