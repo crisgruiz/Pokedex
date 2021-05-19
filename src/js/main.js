@@ -10,12 +10,11 @@ function handleForm(ev) {
 searchPrevent.addEventListener("submit", handleForm);
 
 //Llamada al API
-const getDataFromApi = () => {
-  const inputValue = inputElement.value.toLowerCase();
-  fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`)
+const getDataFromApi = (pokemon) => {
+  const inputValue = pokemon.toLowerCase();
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       const pokemon = {
         pokemonName: data.name,
         image: data.sprites.front_default,
@@ -24,11 +23,15 @@ const getDataFromApi = () => {
         weight: data.weight,
         height: data.height,
       };
-      console.log(pokemon);
+
       return pokemon;
     });
 };
 
 //Botón buscar
 
-btnSearch.addEventListener("click", getDataFromApi);
+const handleSearchInput = () => {
+  getDataFromApi(inputElement.value).then((x) => console.log(x));
+};
+
+btnSearch.addEventListener("click", handleSearchInput);
