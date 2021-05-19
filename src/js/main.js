@@ -15,6 +15,7 @@ const getDataFromApi = () => {
   fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const pokemon = {
         pokemonName: data.name,
         image: data.sprites.front_default,
@@ -29,4 +30,4 @@ const getDataFromApi = () => {
 
 //Botón buscar
 
-btnSearch.addEventListener("click", handleGetToApi);
+btnSearch.addEventListener("click", getDataFromApi);
