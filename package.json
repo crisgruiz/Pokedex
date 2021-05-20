@@ -3,7 +3,7 @@
 	"version": "3.0.1",
 	"description": "Adalab web starter kit",
 	"dependencies": {
-		"browser-sync": "^2.26.14",
+		"browser-sync": "^2.26.12",
 		"del": "^5.1.0",
 		"eslint": "^7.1.0",
 		"gulp": "^4.0.2",
@@ -22,7 +22,6 @@
 		"run-sequence": "*"
 	},
 	"devDependencies": {
-		"jest": "^26.6.3",
 		"lodash.template": ">=4.5.0"
 	},
 	"scripts": {

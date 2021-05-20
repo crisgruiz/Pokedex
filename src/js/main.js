@@ -4,6 +4,7 @@ const inputElement = document.querySelector(".js-input");
 const btnSearch = document.querySelector(".js-searchBtn");
 const searchPrevent = document.querySelector(".js-form");
 const searchContainer = document.querySelector(".searchContainer");
+const pokemonDetail = document.querySelector(".js-pokemonDetail");
 
 function handleForm(ev) {
   ev.preventDefault();
