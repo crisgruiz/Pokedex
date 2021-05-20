@@ -3,7 +3,7 @@
 const inputElement = document.querySelector(".js-input");
 const btnSearch = document.querySelector(".js-searchBtn");
 const searchPrevent = document.querySelector(".js-form");
-const pokemonDetail = document.querySelector(".js-pokemonDetail");
+const searchContainer = document.querySelector(".searchContainer");
 
 function handleForm(ev) {
   ev.preventDefault();
@@ -50,6 +50,7 @@ const handleSearchInput = () => {
   getDataFromApi(inputElement.value).then((x) => {
     pokemon = x;
     paintDetails(x);
+    searchContainer.classList.add("hidden");
   });
 };
 
