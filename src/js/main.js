@@ -5,6 +5,7 @@ const btnSearch = document.querySelector(".js-searchBtn");
 const searchPrevent = document.querySelector(".js-form");
 const searchContainer = document.querySelector(".searchContainer");
 const pokemonDetail = document.querySelector(".js-pokemonDetail");
+const closeDetail = document.querySelector(".js-close");
 
 function handleForm(ev) {
   ev.preventDefault();
@@ -34,7 +35,7 @@ const getDataFromApi = (pokemon) => {
 const paintDetails = (pokemon) => {
   let htmlCode = "";
   htmlCode += `<h3 class="pokemonDetail__title">${pokemon.pokemonName}</h3>`;
-  htmlCode += `<img class="pokemonDetail__img" src="${pokemon.image}">`;
+  htmlCode += `<img class="pokemonDetail__img js-image" src="${pokemon.image}">`;
   htmlCode += `<h3 class="pokemonDetail__type">Type:</h3>`;
   for (let i = 0; i < pokemon.type.length; i++) {
     htmlCode += `<p class="pokemonDetail__type--title""> ${pokemon.type[i]}</p>`;
@@ -52,7 +53,26 @@ const handleSearchInput = () => {
     pokemon = x;
     paintDetails(x);
     searchContainer.classList.add("hidden");
+    closeDetail.classList.remove("hidden");
   });
 };
 
 btnSearch.addEventListener("click", handleSearchInput);
+
+const handleCloseDetail = () => {
+  let htmlCode = "";
+  const isOpen = searchContainer.classList.contains("hidden");
+  if (isOpen) {
+    searchContainer.classList.remove("hidden");
+    pokemonDetail.innerHTML = htmlCode;
+    closeDetail.classList.add("hidden");
+  } else {
+    paintDetails();
+    searchContainer.classList.add("hidden");
+    closeDetail.classList.remove("hidden");
+  }
+};
+
+if (closeDetail) {
+  closeDetail.addEventListener("click", handleCloseDetail);
+}
