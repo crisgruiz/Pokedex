@@ -1,5 +1,4 @@
 "use strict";
-
 const inputElement = document.querySelector(".js-input");
 const btnSearch = document.querySelector(".js-searchBtn");
 const searchPrevent = document.querySelector(".js-form");
@@ -40,10 +39,16 @@ const paintDetails = (pokemon) => {
   for (let i = 0; i < pokemon.type.length; i++) {
     htmlCode += `<p class="pokemonDetail__type--title""> ${pokemon.type[i]}</p>`;
   }
+  htmlCode += `<div class="row">`;
+  htmlCode += `<div class="col col-6">`;
   htmlCode += `<p class="pokemonDetail__height">Height:</p>`;
   htmlCode += `<p class="pokemonDetail__weight">${pokemon.height}"</p>`;
+  htmlCode += `</div>`;
+  htmlCode += `<div class="col col-6">`;
   htmlCode += `<p class="pokemonDetail__weight">Weight:</p>`;
   htmlCode += `<p class="pokemonDetail__weight">${pokemon.weight} lbs</p>`;
+  htmlCode += `</div>`;
+  htmlCode += `</div>`;
   pokemonDetail.innerHTML = htmlCode;
 };
 let pokemon = {};

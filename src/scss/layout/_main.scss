@@ -1,3 +1,34 @@
 .hidden {
   visibility: hidden;
 }
+
+.main {
+  background: url("../images/background.jpg") no-repeat center / cover fixed;
+  height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  &__title {
+    margin: 50px 0 20px;
+  }
+}
+.searchContainer {
+  &__title {
+    margin: 0 0 20px;
+  }
+}
+.form {
+  &__container {
+    justify-content: center;
+    align-items: center;
+  }
+  &__searchBtn {
+    margin: 25px 0;
+    height: 30px;
+    width: 150px;
+    text-transform: uppercase;
+  }
+}

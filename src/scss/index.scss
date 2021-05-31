@@ -1,5 +1,9 @@
-@import "core/variables";
 @import "core/reset";
-@import "components/code";
-@import "components/links";
 @import "layout/main";
+@import "layout/pokemonDetail";
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
