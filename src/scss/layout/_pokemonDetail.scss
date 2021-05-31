@@ -1,6 +1,30 @@
 .pokemonDetail {
-  // background-color: black;
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  margin-top: -100px;
+  &__card {
+    width: 350px;
+  }
   &__img {
-    width: 500px;
+    width: 300px;
+    margin: 25px 0;
+    background-color: burlywood;
+    padding: 50px;
+    border-radius: 50%;
+    border: black solid 1px;
+  }
+  &__type {
+    &--title {
+      text-transform: capitalize;
+      margin-top: 10px 0 20px;
+    }
   }
 }
