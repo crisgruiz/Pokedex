@@ -9,6 +9,8 @@
   justify-content: start;
   align-items: center;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
   margin-top: -100px;
   &__card {
     width: 350px;
@@ -24,7 +26,7 @@
   &__type {
     &--title {
       text-transform: capitalize;
-      margin-top: 10px 0 20px;
+      margin: 20px 0 25px;
     }
   }
 }
