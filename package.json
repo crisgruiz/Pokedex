@@ -32,4 +32,11 @@
 		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push",
 		"deploy": "npm run push-docs"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:Adalab/adalab-web-starter-kit.git"
+	},
+	"author": "Adalab",
+	"license": "MIT",
+	"homepage": "https://github.com/adalab/adalab-web-starter-kit"
 }
