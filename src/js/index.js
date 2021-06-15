@@ -8,28 +8,46 @@ const pokemonDetail = document.querySelector(".js-pokemonDetail");
 const closeDetail = document.querySelector(".js-close");
 const span = document.getElementsByClassName("close")[0];
 const body = document.getElementsByTagName("body")[0];
+const error = document.querySelector(".js-error");
 
 function handleForm(ev) {
   ev.preventDefault();
 }
 searchPrevent.addEventListener("submit", handleForm);
 
+const getJsonResponse = (response) => {
+  let htmlCode = "";
+  if (response.status === 200) {
+    response.json().then((a) => {
+      let pokemonObject = transformPokemonObject(a);
+      paintDetails(pokemonObject);
+      modal.style.display = "block";
+      body.style.position = "static";
+      body.style.height = "100%";
+      body.style.overflow = "hidden";
+    });
+  } else {
+    htmlCode += `<p class="error__text">No existe ningún pokemon con ese nombre. Vuelve a intentarlo</p>`;
+  }
+  error.innerHTML = htmlCode;
+};
+
+const transformPokemonObject = (data) => {
+  const pokemon = {
+    pokemonName: data.name,
+    image: data.sprites.other["official-artwork"].front_default,
+    type: data.types.map((type) => type.type.name),
+    weight: data.weight,
+    height: data.height,
+  };
+  return pokemon;
+};
+
 //Llamada al API
 const getDataFromApi = (pokemon) => {
-  const inputValue = pokemon.toLowerCase();
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const pokemon = {
-        pokemonName: data.name,
-        image: data.sprites.other["official-artwork"].front_default,
-        type: data.types.map((type) => type.type.name),
-        weight: data.weight,
-        height: data.height,
-      };
-      console.log(data);
-      return pokemon;
-    });
+  return fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`
+  ).then(getJsonResponse);
 };
 
 const paintDetails = (pokemon) => {
@@ -54,14 +72,7 @@ const paintDetails = (pokemon) => {
 let pokemon = {};
 
 const handleSearchInput = () => {
-  getDataFromApi(inputElement.value).then((x) => {
-    pokemon = x;
-    paintDetails(x);
-    modal.style.display = "block";
-    body.style.position = "static";
-    body.style.height = "100%";
-    body.style.overflow = "hidden";
-  });
+  getDataFromApi(inputElement.value);
 };
 
 btnSearch.addEventListener("click", handleSearchInput);
