@@ -1,24 +1,14 @@
 .pokemonDetail {
-  background-color: black;
   width: 100%;
-  height: calc(100vh - 148px);
-  position: relative;
-  z-index: 20;
-  display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: -150px;
-  &__card {
-    width: 350px;
-  }
+  position: relative;
   &__img {
     width: 350px;
     margin: 25px 0;
-    background-color: burlywood;
+    background-color: rgb(233, 215, 193);
     padding: 50px;
     border-radius: 50%;
     border: black solid 1px;
@@ -29,4 +19,36 @@
       margin: 20px 0 25px;
     }
   }
+}
+
+.modalContainer {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContainer .modal-content {
+  background-color: #16161670;
+  margin: auto;
+  padding: 30px;
+  border: 1.5px solid lightgray;
+  width: 50%;
+}
+
+.modalContainer .close {
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }

@@ -3,9 +3,11 @@ const inputElement = document.querySelector(".js-input");
 const btnSearch = document.querySelector(".js-searchBtn");
 const searchPrevent = document.querySelector(".js-form");
 const searchContainer = document.querySelector(".searchContainer");
-const pokemonContainer = document.querySelector(".js-pokemonDetailContainer");
+const modal = document.querySelector(".modalContainer");
 const pokemonDetail = document.querySelector(".js-pokemonDetail");
 const closeDetail = document.querySelector(".js-close");
+const span = document.getElementsByClassName("close")[0];
+const body = document.getElementsByTagName("body")[0];
 
 function handleForm(ev) {
   ev.preventDefault();
@@ -32,7 +34,6 @@ const getDataFromApi = (pokemon) => {
 
 const paintDetails = (pokemon) => {
   let htmlCode = "";
-  // htmlCode += `<h3 class="pokemonDetail__title">${pokemon.pokemonName}</h3>`;
   htmlCode += `<img class="pokemonDetail__img js-image" src="${pokemon.image}">`;
   htmlCode += `<h3 class="pokemonDetail__type">Type:</h3>`;
   for (let i = 0; i < pokemon.type.length; i++) {
@@ -56,25 +57,20 @@ const handleSearchInput = () => {
   getDataFromApi(inputElement.value).then((x) => {
     pokemon = x;
     paintDetails(x);
-    searchContainer.classList.add("hidden");
-    pokemonContainer.classList.remove("hidden");
+    modal.style.display = "block";
+    body.style.position = "static";
+    body.style.height = "100%";
+    body.style.overflow = "hidden";
   });
 };
 
 btnSearch.addEventListener("click", handleSearchInput);
 
 const handleCloseDetail = () => {
-  let htmlCode = "";
-  const isOpen = searchContainer.classList.contains("hidden");
-  if (isOpen) {
-    searchContainer.classList.remove("hidden");
-    pokemonDetail.innerHTML = htmlCode;
-    pokemonContainer.classList.add("hidden");
-  } else {
-    paintDetails();
-    searchContainer.classList.add("hidden");
-    pokemonContainer.classList.remove("hidden");
-  }
+  modal.style.display = "none";
+  body.style.position = "inherit";
+  body.style.height = "auto";
+  body.style.overflow = "visible";
 };
 
 if (closeDetail) {
