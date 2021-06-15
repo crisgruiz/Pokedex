@@ -5,9 +5,10 @@
   align-items: center;
   text-align: center;
   position: relative;
+  font-size: 20px;
   &__img {
     width: 350px;
-    margin: 25px 0;
+    margin: 24px;
     background-color: rgb(233, 215, 193);
     padding: 50px;
     border-radius: 50%;
@@ -39,7 +40,7 @@
   margin: auto;
   padding: 30px;
   border: 1.5px solid lightgray;
-  width: 50%;
+  width: 500px;
 }
 
 .modalContainer .close {
